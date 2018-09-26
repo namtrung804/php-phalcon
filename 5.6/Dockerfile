@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:5.6-fpm
 
 LABEL maintainer "https://github.com/namtrung804"
 
