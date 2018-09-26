@@ -5,7 +5,7 @@ LABEL maintainer "https://github.com/namtrung804"
 ENV PHALCON_VERSION=3.2.2
 ENV DEVTOOLS_VERSION=3.2.2
 
-ADD php.ini /usr/local/etc/php/
+ADD ./php.ini /usr/local/etc/php/
 
 RUN set -xe \
 
