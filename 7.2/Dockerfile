@@ -34,13 +34,14 @@ RUN curl -L https://getcomposer.org/installer -o composer-setup.php \
 # php modules
 
 RUN apt-get update -y \
-    && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev libxml2-dev zlib1g-dev unzip git --no-install-recommends --no-install-suggests \
+    && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev libpng-dev libxml2-dev zlib1g-dev unzip git --no-install-recommends --no-install-suggests \
     && apt-get clean -y \
     && pecl install redis xdebug \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-enable redis xdebug \
-    && docker-php-ext-install mbstring xml opcache pdo_mysql mysqli soap zip session bcmath ctype dom hash sockets pdo fileinfo gettext iconv xmlrpc xmlwriter
+    && docker-php-ext-install mbstring xml opcache pdo_mysql mysqli soap zip session bcmath ctype dom hash sockets pdo fileinfo gettext xmlrpc xmlwriter
 
 WORKDIR /app
 
