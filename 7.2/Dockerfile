@@ -13,7 +13,7 @@ RUN curl -L https://getcomposer.org/installer -o composer-setup.php \
 # php modules
 
 RUN apt-get update -y \
-    && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev libxml2-dev zlib1g-dev unzip git --no-install-recommends --no-install-suggests \
+    && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev libxml2-dev zlib1g-dev unzip git jpegoptim optipng pngquant gifsicle --no-install-recommends --no-install-suggests \
     && apt-get clean -y \
     && pecl install redis xdebug \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
